@@ -86,24 +86,28 @@
 
 .developers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
     margin-top: 4rem;
-    max-width: 1000px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 1rem;
 }
 
 .developer-card {
     background: var(--white);
-    border-radius: 16px;
-    padding: 1.5rem;
+    border-radius: 20px;
+    padding: 2rem;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .developer-card::before {
@@ -115,13 +119,13 @@
     height: 4px;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 .developer-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    border-color: var(--primary-color);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border-color: rgba(30, 64, 175, 0.2);
 }
 
 .developer-card:hover::before {
@@ -129,35 +133,64 @@
 }
 
 .card-image {
-    width: 140px;
-    height: 180px;
+    width: 180px;
+    height: 220px;
     margin: 0 auto 1.5rem;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transition: all 0.4s ease;
+    position: relative;
+    background: var(--light-bg);
 }
 
 .developer-card:hover .card-image {
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card-content h3 {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.375rem;
+    font-weight: 700;
     color: var(--text-dark);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+}
+
+.card-role {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
     margin: 0;
+    line-height: 1.5;
+    opacity: 0.85;
 }
 
 /* Responsividade */
+@media (max-width: 1200px) {
+    .developers-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .dev-hero {
         padding: 6rem 0 3rem;
@@ -172,17 +205,21 @@
     }
     
     .developers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: 1.5rem;
     }
     
     .card-image {
-        width: 120px;
-        height: 150px;
+        width: 150px;
+        height: 180px;
     }
     
     .developer-card {
         padding: 1.5rem;
+    }
+    
+    .card-content h3 {
+        font-size: 1.25rem;
     }
 }
 
@@ -202,19 +239,24 @@
     .developers-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        max-width: 100%;
     }
     
     .card-image {
-        width: 100px;
-        height: 130px;
+        width: 160px;
+        height: 200px;
     }
     
     .developer-card {
-        padding: 1.25rem;
+        padding: 1.5rem;
     }
     
     .card-content h3 {
-        font-size: 1rem;
+        font-size: 1.125rem;
+    }
+    
+    .card-role {
+        font-size: 0.9375rem;
     }
 }
 
@@ -223,12 +265,24 @@
     animation: fadeInUp 0.6s ease-out;
 }
 
-.developer-card:nth-child(1) { animation-delay: 0.1s; }
-.developer-card:nth-child(2) { animation-delay: 0.2s; }
-.developer-card:nth-child(3) { animation-delay: 0.3s; }
-.developer-card:nth-child(4) { animation-delay: 0.4s; }
-.developer-card:nth-child(5) { animation-delay: 0.5s; }
-.developer-card:nth-child(6) { animation-delay: 0.6s; }
+.developer-card:nth-child(1) { animation-delay: 0.05s; }
+.developer-card:nth-child(2) { animation-delay: 0.1s; }
+.developer-card:nth-child(3) { animation-delay: 0.15s; }
+.developer-card:nth-child(4) { animation-delay: 0.2s; }
+.developer-card:nth-child(5) { animation-delay: 0.25s; }
+.developer-card:nth-child(6) { animation-delay: 0.3s; }
+.developer-card:nth-child(7) { animation-delay: 0.35s; }
+.developer-card:nth-child(8) { animation-delay: 0.4s; }
+.developer-card:nth-child(9) { animation-delay: 0.45s; }
+.developer-card:nth-child(10) { animation-delay: 0.5s; }
+.developer-card:nth-child(11) { animation-delay: 0.55s; }
+.developer-card:nth-child(12) { animation-delay: 0.6s; }
+.developer-card:nth-child(13) { animation-delay: 0.65s; }
+.developer-card:nth-child(14) { animation-delay: 0.7s; }
+.developer-card:nth-child(15) { animation-delay: 0.75s; }
+.developer-card:nth-child(16) { animation-delay: 0.8s; }
+.developer-card:nth-child(17) { animation-delay: 0.85s; }
+.developer-card:nth-child(18) { animation-delay: 0.9s; }
 
 @keyframes fadeInUp {
     from {
